@@ -1,0 +1,25 @@
+<div>required1: {{ required1 }}</div>
+<div>required2: {{ required2 }}</div>
+<div>oldRequired: {{ oldRequired }}</div>
+<div>withDefaultValue: {{ withDefaultValue }}</div>
+<div>optional: {{ optional }}</div>
+<div *ngIf="optional !== null">optional with ngIf: {{ optional }}</div>
+<!-- jobb performance -->
+<div *ngIf="optional | isNotNil">optional with pipe: {{ optional }}</div>
+<!-- Megmondom az oszintet, hogy itt a performance-t nem tudom,
+ szerintem ez minden renderernel fut, ellenben a pipe hatekonyabb, viszont ez szebb-->
+<div *isNotNil="optional">
+  optional with structural directive: {{ optional }}
+</div>
+<div>optionalNowByStyleGuides: {{ optionalNowByStyleGuides }}</div>
+<div *ngIf="optionalNowByStyleGuides !== undefined">
+  optionalNowByStyleGuides with ngIf: {{ optionalNowByStyleGuides }}
+</div>
+<!-- jobb performance -->
+<div *ngIf="optionalNowByStyleGuides | isNotNil">
+  optionalNowByStyleGuides with pipe: {{ optionalNowByStyleGuides }}
+</div>
+<div *isNotNil="optionalNowByStyleGuides">
+  optionalNowByStyleGuides with structural directive:
+  {{ optionalNowByStyleGuides }}
+</div>
